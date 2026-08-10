@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiteWorks Estimating Dashboard</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>SiteWorks Estimating Dashboard</h1>
+        <p>Bid Opportunities</p>
+    </header>
+
+    <main>
+
+        <div class="toolbar">
+            <!-- <button id="addProjectBtn">+ Add Project</button> -->
+
+            <!-- <input
+                type="text"
+                id="searchBox"
+                placeholder="Search projects..."> -->
+                <button id="submit">Submit</button>
+        </div>
+
+        <table id="projectsTable">
+
+            <thead>
+
+                <tr>
+                    <th>Job #</th>
+                    <th>Project</th>
+                    <th>GC</th>
+                    <th>PW / Union</th>
+                    <th>Bid Due</th>
+                    <th>Bid?</th>
+                    <th>Action Needed</th>
+                    <th>Assigned To</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="projectBody">
+
+                <!-- app.js inserts rows here -->
+
+            </tbody>
+
+        </table>
+    </main>
+
+	<script src="./js/api.js"></script>
+	<script src="./js/formRenderer.js"></script>
+    <script src="./js/app.js"></script>
+
+</body>
+</html>

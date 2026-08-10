@@ -1,0 +1,47 @@
+[
+    {
+        "received": "2026-08-09T16:00:00",
+        "emailSubject": "Test Project",
+        "gc": "Test GC",
+        "bid": false,
+        "assigned": [],
+        "emailFrom": "test@example.com",
+        "project": "Test Project",
+        "bidDue": "2026-08-20",
+        "action": "",
+        "jobNumber": "TEST-001",
+        "type": "PW",
+        "firstReceived": "2026-08-09T16:00:00",
+        "lastUpdated": "2026-08-10T18:33:24.298Z"
+    },
+    {
+        "jobNumber": "TEST-005",
+        "project": "Test Project",
+        "gc": "Test GC",
+        "type": "PW",
+        "bidDue": "2026-08-20",
+        "bid": false,
+        "action": "",
+        "assigned": [],
+        "received": "2026-08-09T16:00:00",
+        "emailFrom": "test@example.com",
+        "emailSubject": "Test Project",
+        "firstReceived": "2026-08-09T16:00:00",
+        "lastUpdated": "2026-08-10T18:37:05.179Z"
+    },
+    {
+        "jobNumber": "TEST-002",
+        "project": "Test Project",
+        "gc": "Test GC",
+        "type": "PW",
+        "bidDue": "2026-08-20",
+        "bid": false,
+        "action": "",
+        "assigned": [],
+        "received": "2026-08-09T16:00:00",
+        "emailFrom": "test@example.com",
+        "emailSubject": "Test Project 3",
+        "firstReceived": "2026-08-09T16:00:00",
+        "lastUpdated": "2026-08-10T18:37:05.179Z"
+    }
+]

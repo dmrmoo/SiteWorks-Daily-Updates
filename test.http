@@ -1,0 +1,39 @@
+POST http://localhost:3000/api/morning-report
+Content-Type: application/json
+
+{
+    "reportType": "morning",
+    "reportDate": "2026-08-10",
+    "emailWindow": {
+        "from": "2026-08-09T15:00:00",
+        "to": "2026-08-10T07:00:00"
+    },
+    "projects": [
+        {
+            "jobNumber": "TEST-005",
+            "project": "Test Project",
+            "gc": "Test GC",
+            "type": "PW",
+            "bidDue": "2026-08-20",
+            "bid": false,
+            "action": "",
+            "assigned": [],
+            "received": "2026-08-09T16:00:00",
+            "emailFrom": "test@example.com",
+            "emailSubject": "Test Project"
+        },
+        {
+            "jobNumber": "TEST-002",
+            "project": "Test Project",
+            "gc": "Test GC",
+            "type": "PW",
+            "bidDue": "2026-08-20",
+            "bid": false,
+            "action": "",
+            "assigned": [],
+            "received": "2026-08-09T16:00:00",
+            "emailFrom": "test@example.com",
+            "emailSubject": "Test Project 3"
+        }
+    ]
+}
