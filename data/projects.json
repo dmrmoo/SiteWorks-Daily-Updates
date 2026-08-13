@@ -1,1 +1,40 @@
-[]
+[
+    {
+        "jobNumber": "TEST-001",
+        "project": "Fake Project Alpha",
+        "gc": "Test GC One",
+        "type": "Test Bid",
+        "bidDue": "2026-08-20 2:00 PM",
+        "bid": true,
+        "action": "Bid",
+        "assigned": [
+            "Tony",
+            "Bruce",
+            "Dylan"
+        ]
+    },
+    {
+        "jobNumber": "TEST-002",
+        "project": "Fake Project Beta",
+        "gc": "Test GC Two",
+        "type": "Test Bid",
+        "bidDue": "2026-08-21 11:00 AM",
+        "bid": true,
+        "action": "Undecided",
+        "assigned": [
+            "Dylan"
+        ]
+    },
+    {
+        "jobNumber": "TEST-003",
+        "project": "Fake Project Gamma",
+        "gc": "Test GC Three",
+        "type": "Test Bid",
+        "bidDue": "2026-08-22 3:30 PM",
+        "bid": false,
+        "action": "Delete",
+        "assigned": [
+            "Tony"
+        ]
+    }
+]

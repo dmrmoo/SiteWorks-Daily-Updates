@@ -14,14 +14,14 @@
     },
     {
         "jobNumber": "TEST-002",
-        "project": "Test Project",
-        "gc": "Test GC",
-        "type": "PW",
-        "bidDue": "2026-08-20",
+        "project": "Fake Project Beta",
+        "gc": "Test GC Two",
+        "type": "Test Bid",
+        "bidDue": "2026-08-21 11:00 AM",
         "bid": true,
-        "action": "Bid",
+        "action": "Undecided",
         "assigned": [
-            "Tony"
+            "Dylan"
         ]
     },
     {
@@ -38,5 +38,22 @@
         "received": "2026-08-12T06:00:00",
         "emailFrom": "test@example.com",
         "emailSubject": "ChatGPT Action Test"
+    },
+    {
+        "jobNumber": "TEST-001",
+        "project": "Fake Project Alpha",
+        "gc": "Test GC One",
+        "type": "Test Bid",
+        "bidDue": "2026-08-20 2:00 PM",
+        "bid": true,
+        "action": "Bid",
+        "assigned": [
+            "Tony",
+            "Bruce",
+            "Dylan"
+        ],
+        "received": "2026-08-13 7:15 AM",
+        "emailFrom": "test-alpha@example.com",
+        "emailSubject": "TEST ONLY - Fake Project Alpha"
     }
 ]
