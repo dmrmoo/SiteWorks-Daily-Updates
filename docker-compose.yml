@@ -1,0 +1,12 @@
+services:
+  daily-report:
+    build: .
+    container_name: SW_daily
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+
+    environment:
+      MORNING_REPORT_KEY: "5ea291c4be718423cb19d4f823e9ba8a80ff3664ba4d6884403286eb99513a66"

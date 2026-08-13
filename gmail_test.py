@@ -1,0 +1,64 @@
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+import os
+
+SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+
+CREDENTIALS_FILE = "/home/grendel/SiteWorks-Daily-Updates/secrets/google-oath.json"
+TOKEN_FILE = "/home/grendel/SiteWorks-Daily-Updates/secrets/gmail-token.json"
+
+
+def get_credentials():
+    creds = None
+
+    # Load previously saved credentials
+    if os.path.exists(TOKEN_FILE):
+        creds = Credentials.from_authorized_user_file(
+            TOKEN_FILE,
+            SCOPES
+        )
+
+    # Refresh expired credentials
+    if creds and creds.expired and creds.refresh_token:
+        creds.refresh(Request())
+
+    # First-time authorization
+    if not creds or not creds.valid:
+        flow = InstalledAppFlow.from_client_secrets_file(
+            CREDENTIALS_FILE,
+            SCOPES
+        )
+
+        creds = flow.run_local_server(
+            host="localhost",
+            port=8080,
+            access_type="offline",
+            prompt="consent"
+        )
+
+        with open(TOKEN_FILE, "w") as token:
+            token.write(creds.to_json())
+
+    return creds
+
+
+creds = get_credentials()
+
+service = build(
+    "gmail",
+    "v1",
+    credentials=creds
+)
+
+profile = service.users().getProfile(
+    userId="me"
+).execute()
+
+print()
+print("Gmail authentication successful!")
+print("Account:", profile["emailAddress"])
+print("Messages:", profile["messagesTotal"])
+print()
+print("Token saved to:", TOKEN_FILE)
