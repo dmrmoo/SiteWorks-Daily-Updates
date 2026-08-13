@@ -7,15 +7,18 @@ const path = require("path");
 
 const app = express();
 const PORT = 3000;
+const MORNING_REPORT_KEY = process.env.MORNING_REPORT_KEY
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
+
 // File paths
 const projectsPath = path.join(__dirname, "../data/projects.json");
 const historyPath = path.join(__dirname, "../data/history.json");
 const activeBidsPath = path.join(__dirname, "../data/active-bids.json");
+
 
 // Helper functions
 function readJsonFile(filePath, defaultValue = []) {
@@ -36,13 +39,23 @@ function writeJsonFile(filePath, data) {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 4));
 }
 
-// Test route
+
+app.use(express.static(path.join(__dirname, "../frontend")));
+
 app.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "SiteWorks estimating server is running."
-    });
+    res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
+
+app.get("/api/actions", (req, res) => {
+    const actions = readJsonFile(path.join(__dirname, "../data/actions.json"));
+    res.json(actions);
+});
+
+app.get("/api/estimators", (req, res) => {
+    const estimators = readJsonFile(path.join(__dirname, "../data/estimators.json"));
+    res.json(estimators);
+});
+
 
 // Get current projects
 app.get("/api/projects", (req, res) => {
@@ -108,8 +121,21 @@ app.post("/api/projects", (req, res) => {
     }
 });
 
+function requireMorningReportKey(req, res, next) {
+    const key = req.headers["x-api-key"];
+
+    if (!MORNING_REPORT_KEY || key !== MORNING_REPORT_KEY) {
+        return res.status(401).json({
+            success: false,
+            error: "Unauthorized."
+        });
+    }
+
+    next();
+}
+
 // Morning report
-app.post("/api/morning-report", (req, res) => {
+app.post("/api/morning-report", requireMorningReportKey, (req, res) => {
     try {
         const report = req.body;
 
@@ -256,6 +282,8 @@ app.post("/api/active-bids", (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+console.log("Morning report key configured:", !!MORNING_REPORT_KEY);
+app.listen(PORT,"0.0.0.0",  () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+

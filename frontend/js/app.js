@@ -2,20 +2,38 @@ document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
     try {
-        const [projects, actions, estimators] = await Promise.all([
-            fetch("http://localhost:3000/api/projects").then(response => response.json()),
-            fetch("../data/actions.json").then(response => response.json()),
-            fetch("../data/estimators.json").then(response => response.json())
-        ]);
+        console.log("Starting app...");
+
+        const projectsResponse = await fetch("/api/projects");
+        console.log("Projects response:", projectsResponse.status);
+
+        const projects = await projectsResponse.json();
+        console.log("Projects:", projects);
+
+        const actionsResponse = await fetch("/api/actions");
+        console.log("Actions response:", actionsResponse.status);
+
+        const actions = await actionsResponse.json();
+        console.log("Actions:", actions);
+
+        const estimatorsResponse = await fetch("/api/estimators");
+        console.log("Estimators response:", estimatorsResponse.status);
+
+        const estimators = await estimatorsResponse.json();
+        console.log("Estimators:", estimators);
+
+        console.log("Building table...");
 
         buildTable(projects, actions, estimators);
+
+        console.log("Table built.");
+
         sendUpdates();
 
     } catch (error) {
-        console.error("Error loading data:", error);
+        console.error("APP ERROR:", error);
     }
 }
-
 
 function buildTable(projects, actions, estimators) {
 
@@ -210,7 +228,7 @@ function sendUpdates() {
         try {
 
             const response = await fetch(
-                "http://localhost:3000/api/projects",
+                "/api/projects",
                 {
                     method: "POST",
 

@@ -23,5 +23,20 @@
         "assigned": [
             "Tony"
         ]
+    },
+    {
+        "jobNumber": "ACTION-TEST-001",
+        "project": "ChatGPT Action Test",
+        "gc": "Test GC",
+        "type": "PW",
+        "bidDue": "2026-08-20",
+        "bid": true,
+        "action": "Bid",
+        "assigned": [
+            "Tony"
+        ],
+        "received": "2026-08-12T06:00:00",
+        "emailFrom": "test@example.com",
+        "emailSubject": "ChatGPT Action Test"
     }
 ]
